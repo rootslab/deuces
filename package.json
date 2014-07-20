@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "abaco": "=1.9.1",
-    "bilanx" : "=0.1.0",
+    "bilanx" : ">=0.1.0",
     "bolgia" : "=2.6.1",
     "cocker" : "=0.13.2",
     "hiboris" : "=1.1.0",
