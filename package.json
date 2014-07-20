@@ -1,0 +1,42 @@
+{
+  "name": "deuces",
+  "version": "0.0.1",
+  "description": "Deuces.",
+  "homepage": "https://github.com/rootslab/deuces",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rootslab/deuces.git"
+  },
+  "keywords": [
+    "deuces",
+    "spade",
+    "redis client",
+    "Redis",
+    "pubsub",
+    "publish",
+    "subscribe"
+  ],
+  "author": {
+    "name": "Guglielmo Ferri",
+    "email": "44gatti@gmail.com"
+  },
+  "dependencies": {
+    "bolgia" : "=2.6.1",
+    "hiboris" : "=1.1.0",
+    "cocker" : "=0.13.2"
+  },
+  "devDependencies": {},
+  "main": "index",
+  "engines": {
+    "node": ">=0.8.x"
+  },
+  "scripts": {
+    "test": "bash test/run.sh"
+  },
+  "license": "MIT",
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/rootslab/deuces/issues"
+  }
+}
