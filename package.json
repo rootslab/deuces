@@ -1,6 +1,6 @@
 {
   "name": "deuces",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Deuces.",
   "homepage": "https://github.com/rootslab/deuces",
   "private": false,
@@ -22,9 +22,12 @@
     "email": "44gatti@gmail.com"
   },
   "dependencies": {
+    "abaco": "=1.9.1",
+    "bilanx" : "=0.1.0",
     "bolgia" : "=2.6.1",
+    "cocker" : "=0.13.2",
     "hiboris" : "=1.1.0",
-    "cocker" : "=0.13.2"
+    "sermone" : "=1.7.1"
   },
   "devDependencies": {},
   "main": "index",

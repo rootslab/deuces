@@ -6,7 +6,7 @@
 
 [![NPM](https://nodei.co/npm-dl/deuces.png)](https://nodei.co/npm/deuces/)
 
-> _Deuces_, a module to handle Redis commands/replies queues.
+> _Deuces.
 
 ###Install
 
