@@ -16,15 +16,14 @@
 [![NPM GRAPH2](https://nodei.co/npm/deuces.png?downloads=true&stars=true)](https://nodei.co/npm/deuces/)
 
 > **_Deuces_**, a minimal __Redis__ client specific for pubsub and monitor mode, the no script cache, no db selection, no transactions.
-> Code is heavily based on __[♠ Deuces](https://github.com/rootslab/Deuces)__ module, a full-featured __Redis__ client, with a restricted set of features and event types.
+> Code is heavily based on __[♠ Spade](https://github.com/rootslab/Deuces)__ module, a full-featured __Redis__ client, with a restricted set of features and event types.
 
-> Supported commands are:
+> __Supported commands are__:
+>  - __connection__: _auth, ping, quit_
+>  - __pubsub__: publish, subscribe, unsubscribe, psubscribe, punsubscribe_
+>  - __server__: _monitor, time_
 
->  - __connection__: _AUTH, PING, QUIT_
->  - __pubsub__: _PUBLISH, SUBSCRIBE, UNSUBSCRIBE, PSUBSCRIBE, PUNSUBSCRIBE_
->  - __server__: _MONITOR, TIME_
-
-> _**Some Features**_,:
+> _**Some features**_:
  - It implements a simple __delayed mechanism for re-connecting to socket__ when the client connection was
    not voluntarily interrupted.
  - It collects commands in the __queue__ also when the client is __offline__.
@@ -52,9 +51,10 @@
    - __[#disconnect](#disconnect)__
    - __[#cli](#cli)__
    - __[Redis Commands](#redis-commands)__
-   - __[Connection](#connection)__
-   - __[PubSub](#pubsub)__
-   - __[server](#server)__
+     - __[Connection](#connection)__
+     - __[PubSub](#pubsub)__
+     - __[Server](#server)__
+   - __[Command Callback](#command-callback)__
 - __[Events](#events)__
    - __[Events Sequence Diagram](#events-sequence-diagram)__
    - __[Error Events](#error-events)__
@@ -210,7 +210,7 @@ _[Back to ToC](#table-of-contents)_
 
 ----------------------------------------------------------------------
 
-### Properties
+###Properties
 
 > Don't mess with these properties!
 
@@ -351,7 +351,7 @@ _[Back to ToC](#table-of-contents)_
 
 > Arguments within [ ] are optional, '|' indicates multiple type for argument.
 
-####CONNECTION
+#####CONNECTION
 
 > _Redis [Connection](http://redis.io/commands#connection), 5 commands_.
 
@@ -436,7 +436,7 @@ _[Back to ToC](#table-of-contents)_
 
 ---------------------------------------------------------------------------------------
 
-##Events
+###Events
 
 - __[Events Sequence Diagram](#events-sequence-diagram)__
 - __[Error Events](#error-events)__
