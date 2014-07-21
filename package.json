@@ -1,6 +1,6 @@
 {
   "name": "deuces",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Deuces, a minimal __Redis__ client specific for pubsub and monitor mode.",
   "homepage": "https://github.com/rootslab/deuces",
   "private": false,
