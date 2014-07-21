@@ -1,17 +1,18 @@
 ### Deuces
 
-[![GITHUB tag](http://img.shields.io/github/tag/rootslab/deuces.svg)](https://github.com/rootslab/deuces/tags)
+[![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootslab/deuces#mit-license)
+
+[![NPM VERSION](http://img.shields.io/npm/v/deuces.svg)](https://www.npmjs.org/package/deuces)
 [![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/deuces.svg)](http://travis-ci.org/rootslab/deuces)
-[![ISSUES](http://img.shields.io/github/issues/rootslab/deuces.svg)](https://github.com/rootslab/deuces/issues)
-[![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
-[![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg)](http://npm-stat.com/charts.html?package=deuces)
+[![BUILD STATUS](http://img.shields.io/david/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces)
+[![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces#info=devDependencies)
 
 [![NPM GRAPH1](https://nodei.co/npm-dl/deuces.png)](https://nodei.co/npm/deuces/)
 
-[![NPM VERSION](http://img.shields.io/npm/v/deuces.svg)](https://www.npmjs.org/package/deuces)
-[![BUILD STATUS](http://img.shields.io/david/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces)
-[![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces#info=devDependencies)
-[![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootslab/deuces#mit-license)
+[![GITHUB tag](http://img.shields.io/github/tag/rootslab/deuces.svg)](https://github.com/rootslab/deuces/tags)
+[![ISSUES](http://img.shields.io/github/issues/rootslab/deuces.svg)](https://github.com/rootslab/deuces/issues)
+[![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
+[![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg)](http://npm-stat.com/charts.html?package=deuces)
 
 [![NPM GRAPH2](https://nodei.co/npm/deuces.png?downloads=true&stars=true)](https://nodei.co/npm/deuces/)
 
@@ -32,7 +33,7 @@
 
 > 🂢 __Deuces__ makes use of some __well tested__ modules:
  - Some commands mix-ins and reply formatters copied from __[Σ Syllabus](https://github.com/rootslab/syllabus)__ module.
- - __[Sermone](https://github.com/rootslab/sermone)__ to __encode commands__
+ - __[Sermone](https://github.com/rootslab/sermone)__ to __encode commands__.
  - __[Abaco](https://github.com/rootslab/abaco)__ and __[Bolgia](https://github.com/rootslab/bolgia)__ modules to get some utilities.
  - __[β Bilanx](https://github.com/rootslab/bilanx)__  a __fast and simplified__ command queue with __rollback mechanism__ based on __[♎ Libra](https://github.com/rootslab/libra)__ code.
  - __[Cocker](https://github.com/rootslab/cocker)__ module to properly handle __socket reconnection__ when the connection is lost. 
