@@ -15,12 +15,12 @@
 
 [![NPM GRAPH2](https://nodei.co/npm/deuces.png?downloads=true&stars=true)](https://nodei.co/npm/deuces/)
 
-> 🂢 **_Deuces_**, a minimal __Redis__ client specific for pubsub and monitor mode, then no script cache, no db selection, no transactions support.
+> 🂢 **_Deuces_**, a minimal __Redis__ client __specific for pubsub and monitor__ mode, then __no script cache__, __no db selection__, __no transactions support__.
 > Code is heavily based on __[♠ Spade](https://github.com/rootslab/spade)__ module, a full-featured __Redis__ client, with a restricted set of features and event types.
 
 > __Supported commands are__:
 >  - __connection__: _auth, ping, quit_
->  - __pubsub__: publish, subscribe, unsubscribe, psubscribe, punsubscribe_
+>  - __pubsub__: _publish, subscribe, unsubscribe, psubscribe, punsubscribe_
 >  - __server__: _monitor, time_
 
 > _**Some features**_:
@@ -31,8 +31,9 @@
  - It implements automatic __AUTH__ password sending on socket (re)connection, configurable via the _**security**_ constructor option.
 
 > 🂢 __Deuces__ makes use of some __well tested__ modules:
- - Some commands mix-ins and reply formatters from __[Σ Syllabus](https://github.com/rootslab/syllabus)__ module.
- > __[Sermone](https://github.com/rootslab/sermone)__ to encode commands, __[Abaco](https://github.com/rootslab/abaco)__ and __[Bolgia](https://github.com/rootslab/bolgia)__ modules to get some utilities.
+ - Some commands mix-ins and reply formatters copied from __[Σ Syllabus](https://github.com/rootslab/syllabus)__ module.
+ - __[Sermone](https://github.com/rootslab/sermone)__ to __encode commands__
+ - __[Abaco](https://github.com/rootslab/abaco)__ and __[Bolgia](https://github.com/rootslab/bolgia)__ modules to get some utilities.
  - __[β Bilanx](https://github.com/rootslab/bilanx)__  a __fast and simplified__ command queue with __rollback mechanism__ based on __[♎ Libra](https://github.com/rootslab/libra)__ code.
  - __[Cocker](https://github.com/rootslab/cocker)__ module to properly handle __socket reconnection__ when the connection is lost. 
  - __[Hiboris](https://github.com/rootslab/hiboris)__, a utility module to load  __[hiredis](https://github.com/redis/hiredis-node)__ _native parser_, or to fall back to __[Boris](https://github.com/rootslab/boris)__, a _pure js parser_ module for __Redis__ string protocol; internally _Boris_ uses __[Peela](https://github.com/rootslab/peela)__ as command stack.
@@ -453,10 +454,10 @@ _[Back to ToC](#table-of-contents)_
     - **_error_**, it _"simply"_ happens.
 
 ```javascript
-            +                +
-            |                |
-            v                v
-          error           connect+------->(timeout)
+                             +                              +
+                             |                              |
+                             v                              v
+                          connect+------->(timeout)       error
                              +
                              |
                              +-------->(authorized)
@@ -469,14 +470,14 @@ _[Back to ToC](#table-of-contents)_
   |           +        |                     +
   |           |        |                     |
   +           v        |                     |
-lost<----+(*attempt*)  +----+(*monitor*)<----+
-  +           +                              |
-  |           |                              |
-  |           |                 (listen)<----+
-  +->connect<-+                    +
-        +                          |
-        |                          v
-        v        (shutup)<---+(*message*)
+lost<----+(*attempt*)  +----+(*monitor*)<----+---->(listen)
+  +           +                                       +
+  |           |                                       |
+  |           |                                       v
+  +->connect<-+                     (shutup)<---+(*message*)
+        +
+        |
+        v
        ...
 ```
 
