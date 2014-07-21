@@ -1,4 +1,4 @@
-###Deuces
+### Deuces
 
 [![GITHUB tag](http://img.shields.io/github/tag/rootslab/deuces.svg)](https://github.com/rootslab/deuces/tags)
 [![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/deuces.svg)](http://travis-ci.org/rootslab/deuces)
@@ -15,8 +15,8 @@
 
 [![NPM GRAPH2](https://nodei.co/npm/deuces.png?downloads=true&stars=true)](https://nodei.co/npm/deuces/)
 
-> **_Deuces_**, a minimal __Redis__ client specific for pubsub and monitor mode, the no script cache, no db selection, no transactions.
-> Code is heavily based on __[♠ Spade](https://github.com/rootslab/Deuces)__ module, a full-featured __Redis__ client, with a restricted set of features and event types.
+> 🂢 **_Deuces_**, a minimal __Redis__ client specific for pubsub and monitor mode, then no script cache, no db selection, no transactions support.
+> Code is heavily based on __[♠ Spade](https://github.com/rootslab/spade)__ module, a full-featured __Redis__ client, with a restricted set of features and event types.
 
 > __Supported commands are__:
 >  - __connection__: _auth, ping, quit_
@@ -30,10 +30,10 @@
  - It implements an automatic __command rollback__ mechanism for __subscriptions__  when connection is lost and becames ready again.
  - It implements automatic __AUTH__ password sending on socket (re)connection, configurable via the _**security**_ constructor option.
 
-> ♠ __Deuces__ makes use of some __well tested__ modules:
+> 🂢 __Deuces__ makes use of some __well tested__ modules:
  - Some commands mix-ins and reply formatters from __[Σ Syllabus](https://github.com/rootslab/syllabus)__ module.
  > __[Sermone](https://github.com/rootslab/sermone)__ to encode commands, __[Abaco](https://github.com/rootslab/abaco)__ and __[Bolgia](https://github.com/rootslab/bolgia)__ modules to get some utilities.
- - __[β Bilanx](https://github.com/rootslab/bilanx)__  a __fast and simplified__ command queue with __rollback mechanism__.
+ - __[β Bilanx](https://github.com/rootslab/bilanx)__  a __fast and simplified__ command queue with __rollback mechanism__ based on __[♎ Libra](https://github.com/rootslab/libra)__ code.
  - __[Cocker](https://github.com/rootslab/cocker)__ module to properly handle __socket reconnection__ when the connection is lost. 
  - __[Hiboris](https://github.com/rootslab/hiboris)__, a utility module to load  __[hiredis](https://github.com/redis/hiredis-node)__ _native parser_, or to fall back to __[Boris](https://github.com/rootslab/boris)__, a _pure js parser_ module for __Redis__ string protocol; internally _Boris_ uses __[Peela](https://github.com/rootslab/peela)__ as command stack.
 
