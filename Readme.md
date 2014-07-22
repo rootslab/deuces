@@ -1,6 +1,7 @@
 ### Deuces
 
 [![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootslab/deuces#mit-license)
+[![GITHUB tag](http://img.shields.io/github/tag/rootslab/deuces.svg)](https://github.com/rootslab/deuces/tags)
 [![ISSUES](http://img.shields.io/github/issues/rootslab/deuces.svg)](https://github.com/rootslab/deuces/issues)
 [![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
 [![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg)](http://npm-stat.com/charts.html?package=deuces)
