@@ -1,6 +1,6 @@
 {
   "name": "deuces",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Deuces, a minimal __Redis__ client specific for pubsub and monitor mode.",
   "homepage": "https://github.com/rootslab/deuces",
   "private": false,
@@ -23,10 +23,10 @@
   },
   "dependencies": {
     "abaco": "=1.9.1",
-    "bilanx" : "=0.3.1",
+    "bilanx" : "=0.3.2",
     "bolgia" : "=2.6.1",
     "cocker" : "=0.14.0",
-    "hiboris" : "=1.2.0",
+    "hiboris" : "=1.2.1",
     "sermone" : "=1.7.1"
   },
   "devDependencies": {
@@ -37,7 +37,8 @@
     "node": ">=0.10.x"
   },
   "scripts": {
-    "test": "bash test/run.sh"
+    "test": "bash test/run.sh",
+    "bench": "bash bench/run.sh"
   },
   "license": "MIT",
   "readmeFilename": "Readme.md",

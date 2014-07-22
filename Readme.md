@@ -73,9 +73,9 @@
 > __NOTE:__ only __node__ engines **">=v0.10.x"** are supported.
 
 ```bash
-$ npm install Deuces [-g]
+$ npm install deuces [-g]
 // clone repo
-$ git clone git@github.com:rootslab/Deuces.git
+$ git clone git@github.com:rootslab/deuces.git
 ```
 > __install and update devDependencies__:
 
@@ -88,17 +88,32 @@ $ git clone git@github.com:rootslab/Deuces.git
 > __require__
 
 ```javascript
-var Deuces = require( 'Deuces' );
+var Deuces = require( 'deuces' );
 ```
 > See [examples](example/).
 
 ###Run Tests
 
 ```bash
-$ cd Deuces/
+$ cd deuces/
 $ npm test
 ```
 > __NOTE__: tests need a running __Redis__ server instance, with default/stock configuration.
+
+###Run Benchmarks
+
+> run benchmarks for __deuces__.
+
+```bash
+$ cd deuces/
+$ npm run bench
+```
+
+> __NOTE__:
+>  - benchmarks need a running __Redis__ server instance, with default/stock configuration.
+>  - to switch to the faster __hiredis__ native parser, install **_devDependencies_** .
+
+----------------------------------------------------------------------------------------------
 
 ###Constructor
 
