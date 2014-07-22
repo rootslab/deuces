@@ -35,7 +35,7 @@ var count = function () {
         log( '-> subscribers (clients):', tclients );
         log( '-> publishers:', 1 );
         log( '-> total reply messages for client subscriptions:', channels.length * tclients );
-        assert.ok( reply_messages === channels.length * tclients, 'wrong number of messages replies form subscribe!' );
+        assert.ok( reply_messages === channels.length * tclients, 'wrong number of messages replies for subscribe!' );
         log( '-> total messages published:', requests );
         log( '-> total messages received from publisher:', requests * tclients );
         log( '-> total msecs:', ttime );
