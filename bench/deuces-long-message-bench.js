@@ -22,7 +22,7 @@ var log = console.log
     , cc = tclients
     , stime = 0
     , ttime = 0
-    , long_string = 'deucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeuces'
+    , long_string = 'deucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeucesdeuces'
     , deuces_opt = { hiredis : !! true }
     , publisher = null
     , reply_messages = 0
@@ -57,7 +57,7 @@ var sendCommands = function () {
     stime = Date.now();
     for ( ; i < requests; ++i ) pcmd( 'd', long_string );
 };
-var i = 0
+
 var enqueue = function () {
     var me = this
         ;
@@ -88,7 +88,6 @@ var run = function () {
 
 var add = function () {
     var s = Deuces( deuces_opt )
-        , commands = s.commands
         ;
     publisher = s;
     s.once( 'ready', function () {
