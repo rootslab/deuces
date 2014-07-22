@@ -79,6 +79,7 @@ var run = function () {
         list[ i ] = s;
         s.on( 'error', onError );
         s.on( 'message', count );
+        // only once to prevent error on disconnection by Redis
         s.once( 'ready', enqueue.bind( s ) );
     };
     for ( ; --i >= 0; ) {
