@@ -42,7 +42,6 @@ var onError = function () {
 
 var sendCommands = function () {
     var i = 0
-        , client = null
         , pcmd = publisher.commands.publish
         ;
     stime = Date.now();
