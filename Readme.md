@@ -1,6 +1,9 @@
 ### Deuces
 
 [![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootslab/deuces#mit-license)
+[![ISSUES](http://img.shields.io/github/issues/rootslab/deuces.svg)](https://github.com/rootslab/deuces/issues)
+[![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
+[![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg)](http://npm-stat.com/charts.html?package=deuces)
 
 [![NPM VERSION](http://img.shields.io/npm/v/deuces.svg)](https://www.npmjs.org/package/deuces)
 [![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/deuces.svg)](http://travis-ci.org/rootslab/deuces)
@@ -8,11 +11,6 @@
 [![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces#info=devDependencies)
 
 [![NPM GRAPH1](https://nodei.co/npm-dl/deuces.png)](https://nodei.co/npm/deuces/)
-
-[![GITHUB tag](http://img.shields.io/github/tag/rootslab/deuces.svg)](https://github.com/rootslab/deuces/tags)
-[![ISSUES](http://img.shields.io/github/issues/rootslab/deuces.svg)](https://github.com/rootslab/deuces/issues)
-[![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
-[![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg)](http://npm-stat.com/charts.html?package=deuces)
 
 [![NPM GRAPH2](https://nodei.co/npm/deuces.png?downloads=true&stars=true)](https://nodei.co/npm/deuces/)
 

@@ -14,7 +14,7 @@ var log = console.log
     // number of clients
     , tclients = 20
     // number of requests to send
-    , requests = 8 * 1024
+    , requests = 64 * 1024
     // client list
     , list = []
     , channels = [ 'd', 'e', 'u', 'c', 'e', 's' ]
