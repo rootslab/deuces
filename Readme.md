@@ -27,9 +27,9 @@
  - It collects commands in the __queue__ also when the client is __offline__.
  - It implements an automatic __command rollback__ mechanism for __subscriptions__  when connection is lost and becames ready again.
  - It implements automatic __AUTH__ password sending on socket (re)connection, configurable via the _**security**_ constructor option.
- - It __correctly handles multiple (p)(un)subscriptions__ command as we will expect: 1 command -> multiple replies -> multiple callback executions; it was well tested against some weird edge cases,
- see _[tests](#run-tests)_ for pubsub.
- - It supports the new __PING__ command signature also in __PubSub mode__ and .
+ - It __correctly handles multiple (p)(un)subscriptions__ command as we will expect: 1 command : multiple replies : multiple callback execution; it was well tested against some weird edge cases.
+ See _[tests](#run-tests)_ for pubsub.
+ - It supports the new __PING__ command signature also in __PubSub mode__.
 
 > 🂢 __Deuces__ makes use of some __well tested__ modules:
  - Some commands mix-ins and reply formatters copied from __[Σ Syllabus](https://github.com/rootslab/syllabus)__ module.
