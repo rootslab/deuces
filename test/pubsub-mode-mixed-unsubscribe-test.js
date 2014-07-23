@@ -71,7 +71,7 @@ client.connect( null, function () {
             ++p;
             client.commands.ping( 'Eilà!', function ( is_err, reply, fn ) {
                 // if is_err then Redis < 3
-                legacy = 1;
+                if ( is_err) legacy = 1;
             } );
 
         } );
