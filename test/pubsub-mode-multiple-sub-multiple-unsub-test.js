@@ -46,7 +46,7 @@ client.connect( null, function () {
         log( '- I\'m SUBSCRIBE callback.' );
     } );
 
-    log( '- try to execute a ping command in pubsub mode.' );
+    log( '- try to execute a TIME command in pubsub mode.' );
 
     // push expected events
     evts.push( 'error' );
@@ -56,9 +56,9 @@ client.connect( null, function () {
     evts.push( 'shutup' );
     evts.push( 'message' );
 
-    client.commands.ping( function ( is_err, reply, fn ) {
-        log( '- PING callback should get an error.' );
-         assert.ok( is_err );
+    client.commands.time( function ( is_err, reply, fn ) {
+        log( '- TIME callback should get an error.' );
+        assert.ok( is_err );
     } );
 
     client.on( 'shutup', function () {

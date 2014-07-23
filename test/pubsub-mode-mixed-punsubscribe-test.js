@@ -20,6 +20,7 @@ var debug = !! true
     , evts = []
     // collected events
     , eresult = []
+    , channels = [ 1, 2, 3 ]
     ;
 
 log( '- created new Dueces client with custom options:', inspect( client.options ) );
@@ -34,30 +35,44 @@ client.cli( true, function ( ename, args ) {
 log( '- opening client connection.' );
 
 client.connect( null, function () {
+    var i = 0
+        ;
 
     log( '- now client is connected and ready to send.' );
     // push expected events
     evts.push( 'connect', 'scanqueue', 'ready', 'listen' );
 
-    client.commands.subscribe( 'channel', function () {
+    log( '- subscribe client to "channel".' );
+
+    // push expected event
+    evts.push( 'message' );
+
+    client.commands.subscribe( 'channels', function () {
+
+        log( '- psubscribe client to "chan" pattern.' );
+
         // push expected event
         evts.push( 'message' );
+
         client.commands.psubscribe( 'chan*', function () {
+
+            log( '- unsubscribe client from all channels (no args).' );
+
             // push expected event
             evts.push( 'message' );
+
             client.commands.unsubscribe( null, function () {
                 // push expected event
-                evts.push( 'message' );
+                evts.push( 'message', 'shutup' );
+                log( '- punsubscribe client from all patterns (no args).' );
                 client.commands.punsubscribe( null, function () {
-                    // push expected event
-                    evts.push( 'message', 'shutup' );
+                    ++i;
                 } );
             } );
         } );
     } );
 
 } );
-
 
 log( '- now waiting 2 secs to collect events..' );
 

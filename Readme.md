@@ -377,7 +377,11 @@ _[Back to ToC](#table-of-contents)_
 
 'auth' : function ( String password [, Function cback ] ) : Object
 
+// legacy ping
 'ping' : function ( [ Function cback ] ) : Object
+
+// Redis >= 2.8.x ping, available also in pubsub mode
+'ping' : function ( [ String message, [ Function cback ] ] ) : Object
 
 'quit' : function ( [ Function cback ] ) : Object
 ```
