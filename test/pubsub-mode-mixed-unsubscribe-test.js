@@ -10,7 +10,6 @@ var debug = !! true
     , dbg = debug ? console.log : emptyFn
     , assert = require( 'assert' )
     , Bolgia = require( 'bolgia' )
-    , clone = Bolgia.clone
     , test_utils = require( './deps/test-utils' )
     , inspect = test_utils.inspect
     , format = test_utils.format
@@ -71,7 +70,7 @@ client.connect( null, function () {
             ++p;
             client.commands.ping( 'Eilà!', function ( is_err, reply, fn ) {
                 // if is_err then Redis < 3
-                if ( is_err) legacy = 1;
+                if ( is_err ) legacy = 1;
             } );
 
         } );
