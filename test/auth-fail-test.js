@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /* 
- * Dueces, auth failing test.
+ * Deuces, auth failing test.
  */
 
 var debug = !! true
@@ -14,7 +14,7 @@ var debug = !! true
     , test_utils = require( './deps/test-utils' )
     , inspect = test_utils.inspect
     , format = test_utils.format
-    , Dueces = require( '../' )
+    , Deuces = require( '../' )
     , opt = {
         security : {
             '127.0.0.1:6379' : {
@@ -22,14 +22,14 @@ var debug = !! true
             }
         }
     }
-    , client = Dueces( clone( opt ) )
+    , client = Deuces( clone( opt ) )
     // expected events
     , evts = []
     // collected events
     , eresult = []
     ;
 
-log( '- created new Dueces client with custom options:', inspect( opt ) );
+log( '- created new Deuces client with custom options:', inspect( opt ) );
 
 log( '- enable CLI logging.' );
 

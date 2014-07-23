@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /* 
- * Dueces, pubsub mode events test.
+ * Deuces, pubsub mode events test.
  */
 
 var debug = !! true
@@ -12,9 +12,9 @@ var debug = !! true
     , test_utils = require( './deps/test-utils' )
     , inspect = test_utils.inspect
     , format = test_utils.format
-    , Dueces = require( '../' )
-    , client = Dueces()
-    , another_client = Dueces( {
+    , Deuces = require( '../' )
+    , client = Deuces()
+    , another_client = Deuces( {
         security : {
             '127.0.0.1:6379' : {
                 db : 1
@@ -31,7 +31,7 @@ var debug = !! true
     , unsub_cback_OK = 0
     ;
 
-log( '- created new Dueces client with default options.' );
+log( '- created new Deuces client with default options.' );
 
 log( '- enable CLI logging.' );
 
