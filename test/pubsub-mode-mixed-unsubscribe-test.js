@@ -24,6 +24,7 @@ var debug = !! true
     , clen = channels.length
     , p = 0
     , u = 0
+    , legacy = 0
     ;
 
 log( '- created new Deuces client with custom options:', inspect( client.options ) );
@@ -62,22 +63,15 @@ client.connect( null, function () {
     // push expected message events, 5 empty unsubscriptions from unsubscribe, [ 'unsubscribe', 0, 0 ]
     for ( i = 0; i < channels.length - 1; ++i ) evts.push( 'message' );
 
-    /*
-     * push expected reply events form PING, unsubscribe callback will be executed
-     * 5 times for the first unsubscriptions + 5 times for all empty unsubscriptions,
-     then 10.
-     */
-    for ( i = 0; i < 10; ++i ) evts.push( 'reply' );
-
-    log( evts )
-
     client.commands.subscribe( channels, function () {
         // coutn unsubscribe calls
         ++u;
         client.commands.unsubscribe( null, function () {
             // count pings calls
             ++p;
-            client.commands.ping( 'Eilà!', function () {
+            client.commands.ping( 'Eilà!', function ( is_err, reply, fn ) {
+                // if is_err then Redis < 3
+                legacy = 1;
             } );
 
         } );
@@ -92,6 +86,13 @@ setTimeout( function () {
 
     var i = 0
         ;
+    /*
+     * push expected reply events form PING, unsubscribe callback will be executed
+     * 5 times for the first unsubscriptions + 5 times for all empty unsubscriptions,
+     then 10.
+     */
+    for ( i = 0; i < 10; ++i ) evts.push( legacy ? 'error-reply' : 'reply' );
+
 
     log( '- now disconnecting client with QUIT.' );
 
