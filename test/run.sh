@@ -2,7 +2,7 @@ fails=0
 n=0
 sdate=$(date +"%s")
 for t in test/*-test.js; do
-  echo -e "\n[" ♠ $t "]\n"
+  echo -e "\n[" Deuce  $t "]\n"
   node $t || let fails++
   let n++
 done
