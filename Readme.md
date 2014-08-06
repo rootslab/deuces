@@ -30,6 +30,7 @@
  - It __correctly handles multiple (p)(un)subscriptions__ command as we will expect (1 command : multiple replies : multiple callback execution); it was well tested against some weird edge cases.
  See [tests](#run-tests) for pubsub.
  - It supports the new __PING__ command signature also in __PubSub mode__.
+ - It implements a __polling mechanism__, useful to force __automatic re-connection__ when client hangs while in __PubSub mode__.
 
 > 🂢 __Deuces__ makes use of some __well tested__ modules:
  - Some commands mix-ins and reply formatters copied from __[Σ Syllabus](https://github.com/rootslab/syllabus)__ module.
@@ -38,6 +39,8 @@
  - __[β Bilanx](https://github.com/rootslab/bilanx)__  a __fast and simplified__ command queue with __rollback mechanism__ based on __[♎ Libra](https://github.com/rootslab/libra)__ code.
  - __[Cocker](https://github.com/rootslab/cocker)__ module to properly handle __socket reconnection__ when the connection is lost. 
  - __[Hiboris](https://github.com/rootslab/hiboris)__, a utility module to load  __[hiredis](https://github.com/redis/hiredis-node)__ _native parser_, or to fall back to __[Boris](https://github.com/rootslab/boris)__, a _pure js parser_ module for __Redis__ string protocol; internally _Boris_ uses __[Peela](https://github.com/rootslab/peela)__ as command stack.
+ - __[Cucu](https://github.com/rootslab/cucu)__, a tiny module to handle the scheduled execution of repetitive methods/tasks.
+ - __[Gerry](https://github.com/rootslab/gerry)__, a tiny module to handle event logging to console, for debugging and testing purpose.
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -68,6 +71,7 @@
 - __[MIT License](#mit-license)__
 
 -----------------------------------------------------------------------
+
 ###Install
 
 > __NOTE:__ only __node__ engines **">=v0.10.x"** are supported.
@@ -117,12 +121,12 @@ $ npm run bench
 
 ###Constructor
 
-> Create an instance.
+> Create an instance, the argument within [ ] is optional.
 
 ```javascript
-var l = Deuces()
+Deuces( [ Object opt ] )
 // or
-var l = new Deuces()
+new Deuces( [ Object opt ] )
 ```
 ####Options
 
@@ -221,6 +225,23 @@ opt = {
             requirepass : null
         }
     }
+    /*
+     * Command queue options.
+     */
+    , queue : {
+        /*
+         * Set the max size for the rollback queue.
+         * It defaults to 2^16, to disable set it to 0.
+         */
+        rollback : 64 * 1024
+        /*
+         * Log the last access time to the queue's head.
+         * It is disabled for default.
+         *
+         * NOTE: It is used to store the last time a reply was received. 
+         */
+        , timestamps : false
+    }
 }
 ```
 _[Back to ToC](#table-of-contents)_
@@ -251,6 +272,13 @@ Deuces.commands : Object
 Deuces.ready : Boolean
 
 /*
+ * An Object that holds all scheduled tasks.
+ * See Deuces#initTasks method to load defaults entries like 'polling'.
+ * See Deuces.qq property to handle tasks.
+ */
+Deuces.tasks : Object
+
+/*
  * Some shortcuts to internal modules.
  */
 
@@ -276,10 +304,20 @@ Deuces.queue : Bylanx
 Deuces.mixins : Object
 
 /*
- * An array containing all event listeners for logging to console.
- * See Deuces#cli.
+ * Cucu module to handle tasks.
+ * See https://github.com/rootslab/cucu
  */
-Deuces.cli_debug : Array
+Deuces.qq : Cucu
+
+/*
+ * Debug Properties
+ */
+
+/*
+ * Gerry module to handle events logging.
+ * See https://github.com/rootslab/gerry
+ */
+Deuces.cli_events : Gerry
 
 ```
 _[Back to ToC](#table-of-contents)_
@@ -338,7 +376,18 @@ __Disconnect client from the Redis Server__:
 Deuces#disconnect( [ Function cback ] ) : Deuces
 ```
 
----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+
+####initTasks
+
+> Load default methods/tasks from _'lib/tasks'_ dir, it returns the current Deuces.tasks property.
+
+```javascript
+Deuces#initTasks() : Cucu
+```
+> See [Cucu](https://github.com/rootslab/cucu) to see all available options to handle tasks.
+
+--------------------------------------------------------------------------------------------
 
 ####cli
 

@@ -1,6 +1,6 @@
 {
   "name": "deuces",
-  "version": "0.6.5",
+  "version": "0.7.0",
   "description": "Deuces, a minimal Redis client specific for pubsub and monitor mode.",
   "homepage": "https://github.com/rootslab/deuces",
   "private": false,
@@ -23,11 +23,13 @@
   },
   "dependencies": {
     "abaco": "=1.9.1",
-    "bilanx" : "=0.6.2",
+    "bilanx" : "=0.8.2",
     "bolgia" : "=2.6.2",
     "cocker" : "=0.14.0",
     "hiboris" : "=1.2.1",
-    "sermone" : "=1.7.1"
+    "sermone" : "=1.7.1",
+    "cucu" : "=0.8.1",
+    "gerry" : ">=0.1.0"
   },
   "devDependencies": {
       "hiredis" : ">=0.1.17"
