@@ -18,7 +18,7 @@ var debug = !! true
     // expected events
     , evts = []
     // collected events
-    , eresult = []
+    , collected = client.logger.collected
     , times = 5
     , intval = 1000
     , args = []
@@ -29,9 +29,8 @@ log( '- created new Spade client with default options:', inspect( client.options
 log( '- enable CLI logging.' );
 
 client.cli( true, function ( ename, args ) {
-    eresult.push( ename );
     dbg( '  !%s %s', ename, format( ename, args || [] ) );
-} );
+}, true );
 
 log( '- opening client connection.' );
 
@@ -45,13 +44,18 @@ client.connect( null, function () {
     log( '- now #initTasks.' );
     client.initTasks();
 
+    log( client.logger.list )
+
     log( '- enabling Monitoring mode.' );
     client.commands.monitor( function () {
+
         // push expected events
         for ( i = 0; i < times; ++i ) evts.push( 'polling', 'monitor', 'monitor' );
+
         // start polling, ping without message for Redis < 2.8.x
         log( '- start polling, interval: %s, args: %s, times: %s.', inspect( intval ), inspect( args ), inspect( times ) );
         client.tasks.polling.run( intval, args, times );
+
     } );
 
 } );
@@ -76,7 +80,7 @@ setTimeout( function () {
 
     setTimeout( function () {
         log( '- check collected events for client, should be:', inspect( evts ) );
-        assert.deepEqual( eresult, evts, 'got: ' + inspect( eresult ) );
+        assert.deepEqual( collected.events, evts, 'got: ' + inspect( collected.events ) );
     }, 1000 );
 
 }, 2.5 * intval * times );

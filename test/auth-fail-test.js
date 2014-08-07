@@ -22,20 +22,19 @@ var debug = !! true
         }
     }
     , client = Deuces( opt )
+    , collected = client.logger.collected
     // expected events
     , evts = []
-    // collected events
-    , eresult = []
     ;
 
 log( '- created new Deuces client with custom options:', inspect( opt ) );
 
 log( '- enable CLI logging.' );
 
+// collect events/args
 client.cli( true, function ( ename, args ) {
-    eresult.push( ename );
     dbg( '  !%s %s', ename, format( ename, args || [] ) );
-} );
+}, true );
 
 log( '- opening client connection.' );
 
@@ -48,7 +47,6 @@ log( '- wait 1 second to collect events..' );
 setTimeout( function () {
 
     log( '- check collected events from client, should be: %s.', inspect( evts ) );
-
-    assert.deepEqual( eresult, evts, 'something goes wrong with client authorization! got: ' + inspect( eresult ) );
+    assert.deepEqual( collected.events, evts, 'something goes wrong with client authorization! got: ' + inspect( collected.events ) );
 
 }, 1000 );

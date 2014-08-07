@@ -14,20 +14,19 @@ var debug = !! true
     , format = test_utils.format
     , Deuces = require( '../' )
     , client = Deuces()
+    , collected = client.logger.collected
     // expected events
     , evts = []
-    // collected events
-    , eresult = []
     ;
 
 log( '- created new Deuces client with default options.' );
 
 log( '- enable CLI logging.' );
 
+// collect events/args
 client.cli( true, function ( ename, args ) {
-    eresult.push( ename );
     dbg( '  !%s %s', ename, format( ename, args || [] ) );
-} );
+}, true );
 
 log( '- execute/enqueue MONITOR command in offline mode.' );
 
@@ -60,8 +59,8 @@ setTimeout( function () {
 
     setTimeout( function () {
         log( '- check collected events for client disconnection.' );
-        assert.ok( ~eresult.indexOf( 'offline' ) );
-        assert.ok( ~eresult.indexOf( 'lost' ) );
+        assert.ok( ~ collected.events.indexOf( 'offline' ) );
+        assert.ok( ~ collected.events.indexOf( 'lost' ) );
     }, 1000 );
 
 }, 1000 );

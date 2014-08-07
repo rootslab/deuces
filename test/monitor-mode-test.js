@@ -19,7 +19,7 @@ var debug = !! true
     // expected events
     , evts = []
     // collected events
-    , eresult = []
+    , collected = client.logger.collected
     ;
 
 log( '- created new Deuces client with default options.' );
@@ -27,9 +27,8 @@ log( '- created new Deuces client with default options.' );
 log( '- enable CLI logging.' );
 
 client.cli( true, function ( ename, args ) {
-    eresult.push( ename );
     dbg( '  !%s %s', ename, format( ename, args || [] ) );
-} );
+}, true );
 
 log( '- now connecting client.' );
 
@@ -69,8 +68,8 @@ client.connect( null, function () {
                 , isArray = Array.isArray
                 ;
             // check received monitor messages
-            for ( r in eresult ) {
-                el = eresult[ r ];
+            for ( r in collected.events ) {
+                el = collected.events[ r ];
                 if ( isArray( el ) ) {
                     log( '- check if %s exists in monitor messages.', evts[ i ] );
                     log( el [ 0 ])
@@ -99,8 +98,8 @@ setTimeout( function () {
     setTimeout( function () {
         // end test
         log( '- check collected events for client disconnection.' );
-        assert.ok( ~eresult.indexOf( 'offline' ) );
-        assert.ok( ~eresult.indexOf( 'lost' ) );
+        assert.ok( ~ collected.events.indexOf( 'offline' ) );
+        assert.ok( ~ collected.events.indexOf( 'lost' ) );
     }, 1000 );
 
 }, 3000 );

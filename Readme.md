@@ -318,7 +318,7 @@ Deuces.qq : Cucu
  * Gerry module to handle events logging.
  * See https://github.com/rootslab/gerry
  */
-Deuces.cli_events : Gerry
+Deuces.logger : Gerry
 
 ```
 _[Back to ToC](#table-of-contents)_
@@ -407,7 +407,7 @@ __Enable event logging to console__.
 >  - the default _'logger'_ prints event name and arguments to console.
 
 ```javascript
-Deuces#cli( [ Boolean enable [, Function logger ] ] ) : undefined
+Deuces#cli( [ Boolean enable [, Function logger [, Boolean collect_events ] ] ] ) : undefined
 ```
 > See "[Other Debug Events](#other-debug-events)" section.
 
