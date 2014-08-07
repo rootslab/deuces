@@ -39,8 +39,8 @@
  - __[β Bilanx](https://github.com/rootslab/bilanx)__  a __fast and simplified__ command queue with __rollback mechanism__ based on __[♎ Libra](https://github.com/rootslab/libra)__ code.
  - __[Cocker](https://github.com/rootslab/cocker)__ module to properly handle __socket reconnection__ when the connection is lost. 
  - __[Hiboris](https://github.com/rootslab/hiboris)__, a utility module to load  __[hiredis](https://github.com/redis/hiredis-node)__ _native parser_, or to fall back to __[Boris](https://github.com/rootslab/boris)__, a _pure js parser_ module for __Redis__ string protocol; internally _Boris_ uses __[Peela](https://github.com/rootslab/peela)__ as command stack.
- - __[Cucu](https://github.com/rootslab/cucu)__, a tiny module to handle the scheduled execution of repetitive methods/tasks.
- - __[Gerry](https://github.com/rootslab/gerry)__, a tiny module to handle event logging to console, for debugging and testing purpose.
+ - __[Cucu](https://github.com/rootslab/cucu)__, a tiny module to handle the __scheduled execution of repetitive methods/tasks__.
+ - __[Gerry](https://github.com/rootslab/gerry)__, a tiny module to handle __event logging__ to console, for debugging and testing purpose.
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -54,6 +54,7 @@
 - __[Methods](#methods)__
    - __[#connect](#connect)__
    - __[#disconnect](#disconnect)__
+   - __[#initTasks](#inittasks)__
    - __[#cli](#cli)__
    - __[Redis Commands](#redis-commands)__
      - __[Connection](#connection)__
@@ -380,7 +381,10 @@ Deuces#disconnect( [ Function cback ] ) : Deuces
 
 ####initTasks
 
-> Load default methods/tasks from _'lib/tasks'_ dir, it returns the current Deuces.tasks property.
+> Load default methods/tasks from _'deuces/lib/tasks'_ dir, you could restrict files to load,
+> specifying some filenames. It returns the current Deuces.tasks (Cucu.ttable) property.
+
+> __NOTE__: for now, there is only one task, 'polling', contained in the 'connection' file.
 
 ```javascript
 Deuces#initTasks() : Cucu
