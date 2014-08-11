@@ -49,7 +49,6 @@ exports.test = function ( done ) {
         for ( ; i < channels.length; ++i ) evts.push( 'message' );
 
         // push expected reply events form PING, 6 messages
-        // for ( i = 0; i < channels.length; ++i ) evts.push( 'reply' );
 
         client.commands.subscribe( channels, function () {
             client.commands.ping( 'Eila', function ( is_err, reply, fn ) {
