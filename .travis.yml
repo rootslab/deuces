@@ -1,5 +1,13 @@
 language: node_js
-services:
- - redis-server
 node_js:
+  - "0.11"
   - "0.10"
+  - "0.8"
+before_script: 
+ - npm install -g istanbul
+ - npm install -g codeclimate-test-reporter
+script: istanbul cover -v test/run.js 
+after_script:
+ - codeclimate < coverage/lcov.info
+env: 
+ - CODECLIMATE_REPO_TOKEN=dabda8f207d135428fb3ee67e5688a8eb59c3fee2c1aca46ecdd90d8411beb34

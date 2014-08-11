@@ -1,13 +1,16 @@
 ### Deuces
 
-[![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootslab/deuces#mit-license)
-[![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
-[![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg)](http://npm-stat.com/charts.html?package=deuces)
+[![CODECLIMATE](http://img.shields.io/codeclimate/github/rootslab/deuces.svg?style=flat)](https://codeclimate.com/github/rootslab/deuces)
+[![CODECLIMATE-TEST-COVERAGE](http://img.shields.io/codeclimate/coverage/github/rootslab/deuces.svg?style=flat)](https://codeclimate.com/github/rootslab/deuces)
 
-[![NPM VERSION](http://img.shields.io/npm/v/deuces.svg)](https://www.npmjs.org/package/deuces)
-[![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/deuces.svg)](http://travis-ci.org/rootslab/deuces)
-[![BUILD STATUS](http://img.shields.io/david/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces)
-[![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/rootslab/deuces.svg)](https://david-dm.org/rootslab/deuces#info=devDependencies)
+[![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/rootslab/deuces#mit-license)
+[![GITTIP](http://img.shields.io/gittip/rootslab.svg?style=flat)](https://www.gittip.com/rootslab/)
+[![NPM DOWNLOADS](http://img.shields.io/npm/dm/deuces.svg?style=flat)](http://npm-stat.com/charts.html?package=deuces)
+
+[![NPM VERSION](http://img.shields.io/npm/v/deuces.svg?style=flat)](https://www.npmjs.org/package/deuces)
+[![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/deuces.svg?style=flat)](http://travis-ci.org/rootslab/deuces)
+[![BUILD STATUS](http://img.shields.io/david/rootslab/deuces.svg?style=flat)](https://david-dm.org/rootslab/deuces)
+[![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/rootslab/deuces.svg?style=flat)](https://david-dm.org/rootslab/deuces#info=devDependencies)
 
 [![NPM GRAPH1](https://nodei.co/npm-dl/deuces.png)](https://nodei.co/npm/deuces/)
 
