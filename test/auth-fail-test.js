@@ -27,7 +27,7 @@ var debug = !! true
     , evts = []
     ;
 
-log( '- created new Deuces client with custom options:', inspect( opt ) );
+log( '- created new Deuces client with custom options:', inspect( client.options ) );
 
 log( '- enable CLI logging.' );
 
