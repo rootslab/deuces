@@ -10,6 +10,6 @@ before_script:
 script: istanbul cover -v test/run.js 
 after_script:
  - cat coverage/lcov.info | codeclimate
- addons:
-  code_climate:
-   repo_token: dabda8f207d135428fb3ee67e5688a8eb59c3fee2c1aca46ecdd90d8411beb34
+addons:
+ code_climate:
+  repo_token: dabda8f207d135428fb3ee67e5688a8eb59c3fee2c1aca46ecdd90d8411beb34
