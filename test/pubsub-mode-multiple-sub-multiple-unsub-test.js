@@ -4,99 +4,92 @@
  * Deuces, pubsub mode events test.
  */
 
-exports.test = function ( done ) {
+var debug = !! true
+    , emptyFn = function () {}
+    , log = console.log
+    , dbg = debug ? console.log : emptyFn
+    , assert = require( 'assert' )
+    , test_utils = require( './deps/test-utils' )
+    , inspect = test_utils.inspect
+    , format = test_utils.format
+    , Deuces = require( '../' )
+    , client = Deuces()
+    // expected events
+    , evts = []
+    // collected events
+    , collected = client.logger.collected
+    // channels
+    , channels = [ 'a', 'a', 'b', 'b', 'c', 'c' ]
+    ;
 
-    var debug = !! true
-        , emptyFn = function () {}
-        , log = console.log
-        , dbg = debug ? console.log : emptyFn
-        , assert = require( 'assert' )
-        , test_utils = require( './deps/test-utils' )
-        , inspect = test_utils.inspect
-        , format = test_utils.format
-        , Deuces = require( '../' )
-        , client = Deuces()
-        // expected events
-        , evts = []
-        // collected events
-        , collected = client.logger.collected
-        // channels
-        , channels = [ 'a', 'a', 'b', 'b', 'c', 'c' ]
-        , exit = typeof done === 'function' ? done : function () {}
+log( '- created new Deuces client with default options.' );
+
+log( '- enable CLI logging.' );
+
+client.cli( true, function ( ename, args ) {
+    dbg( '  !%s %s', ename, format( ename, args || [] ) );
+}, true );
+
+log( '- execute/enqueue SUBSCRIBE command in offline mode.' );
+
+log( '- now connecting client.' );
+
+// push expected events
+evts.push( 'connect', 'scanqueue', 'ready' );
+
+client.connect( null, function () {
+    var i = 0
         ;
 
-    log( '- created new Deuces client with default options.' );
-
-    log( '- enable CLI logging.' );
-
-    client.cli( true, function ( ename, args ) {
-        dbg( '  !%s %s', ename, format( ename, args || [] ) );
-    }, true );
-
-    log( '- execute/enqueue SUBSCRIBE command in offline mode.' );
-
-    log( '- now connecting client.' );
-
-    // push expected events
-    evts.push( 'connect', 'scanqueue', 'ready' );
-
-    client.connect( null, function () {
-        var i = 0
-            ;
-
-        client.commands.subscribe( channels, function () {
-            log( '- I\'m SUBSCRIBE callback.' );
-        } );
-
-        log( '- try to execute a TIME command in pubsub mode.' );
-
-        // push expected events
-        evts.push( 'error' );
-        evts.push( 'listen' );
-        for ( ; i < channels.length + 3; ++i ) evts.push( 'message' );
-        // push a message after shutup for the last unsubscribe message
-        evts.push( 'shutup' );
-        evts.push( 'message' );
-
-        client.commands.time( function ( is_err, reply, fn ) {
-            log( '- TIME callback should get an error.' );
-            assert.ok( is_err );
-        } );
-
-        client.on( 'shutup', function () {
-            // push expected reply event from PING
-            evts.push( 'reply' );
-            client.commands.ping( function ( is_err, reply, fn ) {
-                log( '- PING callback should get PONG reply, got:', fn( reply )[ 0 ] );
-                assert.equal( fn( reply )[ 0 ], 'PONG' );
-
-                log( '- now disconnecting clients with QUIT.' );
-                // push expected reply event from QUIT
-                evts.push( 'reply' );
-                // push expected reply events for disconnection
-                evts.push( 'offline', 'lost' );
-
-                client.commands.quit( function ( is_err, reply, fn ) {
-                    log( '- client QUIT callback.', fn( reply ) );
-                    assert.ok( fn( reply )[ 0 ] === 'OK' );
-                } );
-            } );
-        } );
-
-        client.commands.unsubscribe( [ 'a', 'b', 'c', 'd' ], function () {
-            log( '- I\'m UNSUBSCRIBE callback.' );
-        } )
+    client.commands.subscribe( channels, function () {
+        log( '- I\'m SUBSCRIBE callback.' );
     } );
 
-    log( '- wait 2 seconds to collect events..' );
+    log( '- try to execute a TIME command in pubsub mode.' );
 
-    setTimeout( function () {
+    // push expected events
+    evts.push( 'error' );
+    evts.push( 'listen' );
+    for ( ; i < channels.length + 3; ++i ) evts.push( 'message' );
+    // push a message after shutup for the last unsubscribe message
+    evts.push( 'shutup' );
+    evts.push( 'message' );
 
-        log( '- deep check collected events, should be:', inspect( evts ) );
-        assert.deepEqual( collected.events, evts, 'got: ' + inspect( collected.events ) );
+    client.commands.time( function ( is_err, reply, fn ) {
+        log( '- TIME callback should get an error.' );
+        assert.ok( is_err );
+    } );
 
-        exit();
+    client.on( 'shutup', function () {
+        // push expected reply event from PING
+        evts.push( 'reply' );
+        client.commands.ping( function ( is_err, reply, fn ) {
+            log( '- PING callback should get PONG reply, got:', fn( reply )[ 0 ] );
+            assert.equal( fn( reply )[ 0 ], 'PONG' );
 
-    }, 2000 );
-    
-};
+            log( '- now disconnecting clients with QUIT.' );
+            // push expected reply event from QUIT
+            evts.push( 'reply' );
+            // push expected reply events for disconnection
+            evts.push( 'offline', 'lost' );
+
+            client.commands.quit( function ( is_err, reply, fn ) {
+                log( '- client QUIT callback.', fn( reply ) );
+                assert.ok( fn( reply )[ 0 ] === 'OK' );
+            } );
+        } );
+    } );
+
+    client.commands.unsubscribe( [ 'a', 'b', 'c', 'd' ], function () {
+        log( '- I\'m UNSUBSCRIBE callback.' );
+    } )
+} );
+
+log( '- wait 2 seconds to collect events..' );
+
+setTimeout( function () {
+
+    log( '- deep check collected events, should be:', inspect( evts ) );
+    assert.deepEqual( collected.events, evts, 'got: ' + inspect( collected.events ) );
+
+}, 2000 );
