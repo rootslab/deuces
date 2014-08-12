@@ -85,9 +85,12 @@ exports.test = function ( done ) {
         evts.push( 'offline', 'lost' );
 
         setTimeout( function () {
+
             log( '- check collected events for client disconnection, should be:', inspect( evts ) );
             assert.deepEqual( collected.events.slice( 0, evts.length ), evts, 'got: ' + inspect( collected.events ) );
+
             exit();
+
         }, 1000 );
 
     }, 2000 );
